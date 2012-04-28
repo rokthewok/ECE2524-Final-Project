@@ -15,7 +15,7 @@ def input(eventlist):
 pygame.init()
 # initialize objects here
 player = player.Player("dog.png")
-level = level.Level("BackgroundTest.png")
+level = level.Level("BackgroundTest.png", "level_one_music.mp3")
 #test = Entity.Entity("dog.png",[0,200])
 
 window = pygame.display.set_mode((1024, 384))
