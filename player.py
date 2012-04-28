@@ -17,7 +17,7 @@ class Player(pygame.sprite.Sprite):
 		self.rect = self.rect.move( 200, 200 ) # set start location
 
 	def update(self):
-		self.rect = self.rect.move(self.move, 0)
+		# self.rect = self.rect.move(self.move, 0)
 		if self.jumping:
 			# if the jumping flag is true,
 			# call the jump function
