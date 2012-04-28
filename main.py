@@ -2,7 +2,7 @@
 
 import pygame, sys
 from pygame.locals import *
-import player, level
+import player, level, Entity
 
 # this contains the main loop of the game
 
@@ -15,7 +15,8 @@ def input(eventlist):
 pygame.init()
 # initialize objects here
 player = player.Player("dog.png")
-level = level.Level("BackgroundTest.png");
+level = level.Level("BackgroundTest.png")
+#test = Entity.Entity("dog.png",[0,200])
 
 window = pygame.display.set_mode((1024, 384))
 pygame.display.set_caption('Go Dog, Go!')
