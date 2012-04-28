@@ -1,5 +1,3 @@
-#! /usr/bin/env python
-
 # player class which inherits from pygame sprites
 import pygame
 from pygame.locals import *
