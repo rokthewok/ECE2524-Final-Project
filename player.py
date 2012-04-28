@@ -11,27 +11,35 @@ class Player(pygame.sprite.Sprite):
 		self.image = pygame.image.load(filename) # load an image for the character
 		self.rect = self.image.get_rect() # get the enclosing rectangle for the image
 		self.jumping = False # jumping flag
-		self.jump = -4 # amount of jump movement per update
-		self.jump_height = 0 # to keep track of the height jumped 
+		self.can_jump = True
+		self.y_vel = 0 # amount of jump movement per update
 		
 		self.rect = self.rect.move( 200, 200 ) # set start location
 
 	def update(self):
-		# self.rect = self.rect.move(self.move, 0)
 		if self.jumping:
 			# if the jumping flag is true,
 			# call the jump function
-			self._jump()
-
-	def _jump(self):
-		"""function which makes the player 'jump'"""
-		self.rect = self.rect.move(0, self.jump) # move upwards by self.jump amount
-		self.jump_height = self.jump_height + self.jump # change the total amount jumped thus far
-		if self.jump_height < -40: # jump limit
-			self.jump_height = -40
-			self.jump = -self.jump
-		
-		if self.jump_height > 0: # stop jumping
-			self.jump_height = 0
-			self.jump = -self.jump
+			self.y_vel = -5
 			self.jumping = False
+			self.accel_delay = 0
+			self.rect.top -= 3
+		
+		if self.rect.top < 200:
+			if self.rect.top < 0:
+				self.y_vel = 0
+				self.can_jump = False
+
+			self.accel_delay -= 1
+			if self.accel_delay <= 0:
+				self.y_vel += 1
+				self.accel_delay = 6
+			
+			self.rect = self.rect.move(0, self.y_vel) # move upwards by self.jump amount
+		else:
+			self.rect.top = 200
+			self.can_jump = True
+
+	def jump(self):
+		"""function which makes the player 'jump'"""
+		self.jumping = self.can_jump

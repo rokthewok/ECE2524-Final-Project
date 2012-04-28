@@ -39,7 +39,7 @@ while True:
 		sys.exit(0)
 
 	if event.type == KEYDOWN and event.key == K_UP:
-		player.jumping = True
+		player.jump()
 
 	screen.fill((0,0,0))
 
