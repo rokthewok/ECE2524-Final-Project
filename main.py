@@ -10,7 +10,7 @@ import Entity
 pygame.init()
 # initialize objects here
 player = player.Player("dog_cape1.png", "dog_cape2.png")
-level = level.Level("BackgroundTest.png","level_one_music.mp3")
+level = level.Level("Background.png","level_one_music.mp3")
 window = pygame.display.set_mode((1024, 384))
 pygame.display.set_caption('Go Dog, Go!')
 screen = pygame.display.get_surface()
