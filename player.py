@@ -7,13 +7,12 @@ from pygame.locals import *
 class Player(pygame.sprite.Sprite):
 	
 	def __init__(self, filename):
-		pygame.sprite.Sprite.__init__(self)
-		self.image = pygame.image.load(filename)
-		self.rect = self.image.get_rect()
-		self.jumping = False
+		pygame.sprite.Sprite.__init__(self) # initialize the base class
+		self.image = pygame.image.load(filename) # load an image for the character
+		self.rect = self.image.get_rect() # get the enclosing rectangle for the image
+		self.jumping = False # jumping flag
 		self.jump = -4 # amount of jump movement per update
 		self.jump_height = 0 # to keep track of the height jumped 
-		self.move = 5 # amount of movement per update
 		
 		self.rect = self.rect.move( 200, 200 ) # set start location
 
@@ -25,13 +24,14 @@ class Player(pygame.sprite.Sprite):
 			self._jump()
 
 	def _jump(self):
-		self.rect = self.rect.move(0, self.jump)
-		self.jump_height = self.jump_height + self.jump
-		if self.jump_height < -40:
+		"""function which makes the player 'jump'"""
+		self.rect = self.rect.move(0, self.jump) # move upwards by self.jump amount
+		self.jump_height = self.jump_height + self.jump # change the total amount jumped thus far
+		if self.jump_height < -40: # jump limit
 			self.jump_height = -40
 			self.jump = -self.jump
 		
-		if self.jump_height > 0:
+		if self.jump_height > 0: # stop jumping
 			self.jump_height = 0
 			self.jump = -self.jump
 			self.jumping = False
