@@ -23,7 +23,7 @@ screen = pygame.display.get_surface()
 
 clock = pygame.time.Clock()
 
-objects = pygame.sprite.RenderPlain((player, level))
+objects = pygame.sprite.OrderedUpdates((level, player))
 
 while True:
 	# catch event
@@ -42,6 +42,7 @@ while True:
 		player.jumping = True
 
 	screen.fill((0,0,0))
+
 
 	# update and draw objects
 	objects.update()
