@@ -2,7 +2,7 @@
 
 import pygame, sys
 from pygame.locals import *
-import player
+import player, level
 
 # this contains the main loop of the game
 
@@ -15,14 +15,15 @@ def input(eventlist):
 pygame.init()
 # initialize objects here
 player = player.Player("dog.png")
+level = level.Level("BackgroundTest.png");
 
-window = pygame.display.set_mode((1024, 768))
+window = pygame.display.set_mode((1024, 384))
 pygame.display.set_caption('Go Dog, Go!')
 screen = pygame.display.get_surface()
 
 clock = pygame.time.Clock()
 
-objects = pygame.sprite.RenderPlain((player))
+objects = pygame.sprite.RenderPlain((player, level))
 
 while True:
 	# catch event
@@ -41,6 +42,7 @@ while True:
 		player.jumping = True
 
 	screen.fill((0,0,0))
+
 	# update and draw objects
 	objects.update()
 	objects.draw(screen)
