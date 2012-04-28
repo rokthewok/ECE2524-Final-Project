@@ -14,7 +14,7 @@ def input(eventlist):
 
 pygame.init()
 # initialize objects here
-player = player.Player("dog.png")
+player = player.Player("dog_cape1.png", "dog_cape2.png")
 level = level.Level("BackgroundTest.png")
 #test = Entity.Entity("dog.png",[0,200])
 
