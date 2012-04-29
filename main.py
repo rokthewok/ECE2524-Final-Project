@@ -10,8 +10,8 @@ import menu
 
 pygame.init()
 # initialize objects here
-player = player.Player(("dog_cape1.png", "dog_cape2.png"),3)
-level = level.Level("Background.png","level_one_music.mp3")
+player = player.Player(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
+level = level.Level("Images//Background.png","level_one_music.mp3")
 
 window = pygame.display.set_mode((1024, 384))
 pygame.display.set_caption('Go Dog, Go!')
@@ -22,7 +22,7 @@ clock = pygame.time.Clock()
 objects = pygame.sprite.OrderedUpdates((level,player))
 
 # open the starting menu
-main_menu = menu.Menu( "main_menu.png" )
+main_menu = menu.Menu( "Images//main_menu.png" )
 main_menu.menu(screen)
 
 while True:
