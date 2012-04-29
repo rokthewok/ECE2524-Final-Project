@@ -18,5 +18,5 @@ class Level(pygame.sprite.Sprite):
 		# self.music = pygame.mixer.music.load(music_file)
 		#self.music.pygame.mixer.music.play(-1) # loop infinitely
 		
-	def update(self):
+	def update(self,t=0):
 		self.rect = self.rect.move(self.move, 0)
