@@ -20,7 +20,7 @@ class Player(pygame.sprite.Sprite):
 		self.cur_image = 0
 		self.animation_count = 0
 
-	def update(self):
+	def update(self,t=0):
 		self.animation_count -= 1
 		if self.animation_count <= 0:
 			self.animation_count = 20
