@@ -9,9 +9,8 @@ import Entity
 
 pygame.init()
 # initialize objects here
-player = player.Player("dog_cape1.png", "dog_cape2.png")
+player = player.Player(("dog_cape1.png", "dog_cape2.png"),3)
 level = level.Level("Background.png","level_one_music.mp3")
-test = Entity.Entity(("dog_cape1.png","dog_cape2.png"),[0,200],3)
 
 window = pygame.display.set_mode((1024, 384))
 pygame.display.set_caption('Go Dog, Go!')
@@ -19,7 +18,7 @@ screen = pygame.display.get_surface()
 
 clock = pygame.time.Clock()
 	
-objects = pygame.sprite.OrderedUpdates((level,player,test))
+objects = pygame.sprite.OrderedUpdates((level,player))
 
 while True:
 	# catch event
@@ -33,12 +32,14 @@ while True:
 	if event.type == QUIT:
 		sys.exit(0)
 
-	if event.type == KEYDOWN and event.key == K_UP:
-		player.jumping = True
+	if event.type == KEYDOWN:
+		if event.key == K_UP:
+			player.jumping = True
+		if event.key == K_ESCAPE:
+			sys.exit(0)
 
 	screen.fill((0,0,0))
 	# update and draw objects
-	#test.update(time_passed_seconds)
 	objects.update(elapsed_time)
 	objects.draw(screen)
 	pygame.display.flip()
