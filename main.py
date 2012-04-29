@@ -5,6 +5,7 @@ from pygame.locals import *
 import player
 import level
 import Entity
+import menu
 # this contains the main loop of the game
 
 pygame.init()
@@ -19,6 +20,10 @@ screen = pygame.display.get_surface()
 clock = pygame.time.Clock()
 	
 objects = pygame.sprite.OrderedUpdates((level,player))
+
+# open the starting menu
+main_menu = menu.Menu( "main_menu.png" )
+main_menu.menu(screen)
 
 while True:
 	# catch event
