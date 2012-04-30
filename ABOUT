@@ -1,4 +1,5 @@
-This document outlines the project and its details.
+### This document outlines the project and its details. ###
+### NOTE: This document outlines a previous game design concept which is no longer being implemented for this project. ###
 
 GAME OVERVIEW:
 This game will be written in Python and utilize Pygame, an open source game design library in Python. This library will handle rendering, events and other aspects of game programming unrelated to logic. Sprites and other graphics will be hand drawn.

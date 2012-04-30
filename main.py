@@ -10,11 +10,9 @@ import menu
 
 pygame.init()
 # initialize objects here
-#<<<<<<< HEAD
 #player = player.Player("dog_cape1.png", "dog_cape2.png")
 level_one = level.Level("Images//background.png","Images//midground.png","level_one_music.mp3")
 test = Entity.Entity(("Images//dog_cape1.png","Images//dog_cape2.png"),[0,200],3)
-#=======
 player = player.Player(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
 
 window = pygame.display.set_mode((1024, 384))
