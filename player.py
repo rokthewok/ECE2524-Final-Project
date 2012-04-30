@@ -14,14 +14,19 @@ class Player(Entity):
 		if self.jumping:
 			# if the jumping flag is true,
 			# call the jump function
-			self.y_vel = -5
 			self.jumping = False
 			self.accel_delay = 0
-			self.rect.top -= 3
+			if self.rect.top < 2:
+				self.rect.top = 0
+				self.y_vel = 0
+			else:
+				self.rect.top -= 3
+				self.y_vel = -5
 		
 		if self.rect.top < 230:
 			if self.rect.top < 0:
 				self.y_vel = 0
+				self.rect.top = 0
 				self.can_jump = False
 
 			self.accel_delay -= 1
