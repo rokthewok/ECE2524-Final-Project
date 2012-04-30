@@ -1,36 +1,16 @@
 # player class which inherits from pygame sprites
-import pygame
-from pygame.locals import *
+from Entity import Entity
 
-class Player(pygame.sprite.Sprite):
+class Player(Entity):
 	
-	def __init__(self, filename1, filename2):
-		pygame.sprite.Sprite.__init__(self) # initialize the base class
-		self._image0 = pygame.image.load(filename1) # load an image for the character
-		self._image1 = pygame.image.load(filename2) # load an image for the character
-		self.image = self._image0
-		
-		self.rect = self.image.get_rect() # get the enclosing rectangle for the image
+	def __init__(self, image_paths,fps=10):
+		Entity.__init__(self,image_paths,[200,200],fps)	
 		self.jumping = False # jumping flag
 		self.can_jump = True
 		self.y_vel = 0 # amount of jump movement per update
-		
-		self.rect = self.rect.move( 200, 200 ) # set start location
-
-		self.cur_image = 0
-		self.animation_count = 0
 
 	def update(self,t=0):
-		self.animation_count -= 1
-		if self.animation_count <= 0:
-			self.animation_count = 20
-			self.cur_image = (self.cur_image + 1) % 2
-
-			if self.cur_image == 0:
-				self.image = self._image0
-			else:
-				self.image = self._image1
-		
+		Entity.update(self,t)	
 		if self.jumping:
 			# if the jumping flag is true,
 			# call the jump function

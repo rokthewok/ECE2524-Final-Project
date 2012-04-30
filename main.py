@@ -10,9 +10,14 @@ import menu
 
 pygame.init()
 # initialize objects here
+<<<<<<< HEAD
 player = player.Player("dog_cape1.png", "dog_cape2.png")
 level = level.Level("background.png","level_one_music.mp3")
 test = Entity.Entity(("dog_cape1.png","dog_cape2.png"),[0,200],3)
+=======
+player = player.Player(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
+level = level.Level("Images//Background.png","level_one_music.mp3")
+>>>>>>> 6549b0665fb113cdfbf65cd8d65b04b224929758
 
 window = pygame.display.set_mode((1024, 384))
 pygame.display.set_caption('Go Dog, Go!')
@@ -20,10 +25,14 @@ screen = pygame.display.get_surface()
 
 clock = pygame.time.Clock()
 	
+<<<<<<< HEAD
 objects = pygame.sprite.OrderedUpdates((player,test))
+=======
+objects = pygame.sprite.OrderedUpdates((level,player))
+>>>>>>> 6549b0665fb113cdfbf65cd8d65b04b224929758
 
 # open the starting menu
-main_menu = menu.Menu( "main_menu.png" )
+main_menu = menu.Menu( "Images//main_menu.png" )
 main_menu.menu(screen)
 
 while True:
@@ -38,14 +47,20 @@ while True:
 	if event.type == QUIT:
 		sys.exit(0)
 
-	if event.type == KEYDOWN and event.key == K_UP:
-		player.jumping = True
+	if event.type == KEYDOWN:
+		if event.key == K_UP:
+			player.jumping = True
+		if event.key == K_ESCAPE:
+			sys.exit(0)
 
 	screen.fill((0,0,0))
 	# update and draw objects
+<<<<<<< HEAD
 	#test.update(time_passed_seconds)
 	level.update()
 	level.draw(screen)
+=======
+>>>>>>> 6549b0665fb113cdfbf65cd8d65b04b224929758
 	objects.update(elapsed_time)
 	objects.draw(screen)
 	pygame.display.flip()
