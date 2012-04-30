@@ -4,7 +4,7 @@ from Entity import Entity
 class Player(Entity):
 	
 	def __init__(self, image_paths,fps=10):
-		Entity.__init__(self,image_paths,[200,200],fps)	
+		Entity.__init__(self,image_paths,(200,230),fps)	
 		self.jumping = False # jumping flag
 		self.can_jump = True
 		self.y_vel = 0 # amount of jump movement per update
@@ -19,7 +19,7 @@ class Player(Entity):
 			self.accel_delay = 0
 			self.rect.top -= 3
 		
-		if self.rect.top < 200:
+		if self.rect.top < 230:
 			if self.rect.top < 0:
 				self.y_vel = 0
 				self.can_jump = False
@@ -31,7 +31,7 @@ class Player(Entity):
 			
 			self.rect = self.rect.move(0, self.y_vel) # move upwards by self.jump amount
 		else:
-			self.rect.top = 200
+			self.rect.top = 230
 			self.can_jump = True
 
 	def jump(self):
