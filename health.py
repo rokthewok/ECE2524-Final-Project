@@ -10,7 +10,6 @@ class Health(Entity):
 	def update(self,t=0):
 		Entity.update(self,t)
 			
-	def showLives(self):
+#	def showLives(self):
 		#for x in range(0, self.lives-1)
-		#	Entity.__init__(self,image_paths,(300, 20), 10)				
-		
+		#	Entity.__init__(self,image_paths,(300, 20), 10)	
