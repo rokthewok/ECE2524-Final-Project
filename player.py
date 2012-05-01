@@ -4,7 +4,8 @@ from Entity import Entity
 class Player(Entity):
 	
 	def __init__(self, image_paths,fps=10):
-		Entity.__init__(self,image_paths,(200,230),fps)	
+		Entity.__init__(self,image_paths,(200,230),fps)
+		#health = health.Health("Images//bone.png")	
 		self.jumping = False # jumping flag
 		self.can_jump = True
 		self.y_vel = 0 # amount of jump movement per update
@@ -35,6 +36,9 @@ class Player(Entity):
 				self.accel_delay = 6
 			
 			self.rect = self.rect.move(0, self.y_vel) # move upwards by self.jump amount
+		#if self.touching(enemy):
+		#	health.lives -= 1
+		#	health.showLives()
 		else:
 			self.rect.top = 230
 			self.can_jump = True
