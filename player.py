@@ -5,7 +5,7 @@ from Entity import Entity
 class Player(Entity):
 	
 	def __init__(self, image_paths,fps=10):
-		Entity.__init__(self,image_paths,(200,230),fps)
+		Entity.__init__(self,image_paths,(200,230),fps,1)
 		#health = health.Health("Images//bone.png")	
 		self.jumping = False # jumping flag
 		self.can_jump = True

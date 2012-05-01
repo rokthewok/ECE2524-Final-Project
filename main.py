@@ -12,7 +12,7 @@ pygame.init()
 # initialize objects here
 #player = player.Player("dog_cape1.png", "dog_cape2.png")
 level_one = level.Level("Images//background.png","Images//midground.png","level_one_music.mp3")
-test = Entity.Entity(("Images//dog_cape1.png","Images//dog_cape2.png"),[0,200],3)
+test = Entity.Entity(("Images//dog_cape1.png","Images//dog_cape2.png","Images//background.png","Images//midground.png"),[0,200],3,1)
 player = player.Player(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
 
 window = pygame.display.set_mode((1024, 384))
@@ -44,6 +44,9 @@ while True:
 			player.jumping = True
 		if event.key == K_ESCAPE:
 			sys.exit(0)
+		if event.key == K_b:
+			test.setAnim(0,test._endFrame%4+1)
+			print "test._startFrame=",test._startFrame," test._endFrame=",test._endFrame
 
 	screen.fill((0,0,0))
 	# update and draw objects
