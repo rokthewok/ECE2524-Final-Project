@@ -9,41 +9,23 @@ class Player(Entity):
 		#health = health.Health("Images//bone.png")	
 		self.jumping = False # jumping flag
 		self.can_jump = True
-		self.y_vel = 0 # amount of jump movement per update
 
 	def update(self,t=0):
-		Entity.update(self,t)	
+		Entity.update(self,t)
+		print t, self.rect.topleft, self._speed 
 		if self.jumping:
 			# if the jumping flag is true,
 			# call the jump function
+			self._speed[1] = -15.0
 			self.jumping = False
-			self.accel_delay = 0
-			if self.rect.top < 2:
-				self.rect.top = 0
-				self.y_vel = 0
-			else:
-				self.rect.top -= 3
-				self.y_vel = -5
-		
-		if self.rect.top < 230:
-			if self.rect.top < 0:
-				self.y_vel = 0
-				self.rect.top = 0
-				self.can_jump = False
-
-			self.accel_delay -= 1
-			if self.accel_delay <= 0:
-				self.y_vel += 1
-				self.accel_delay = 6
-			
-			self.rect = self.rect.move(0, self.y_vel) # move upwards by self.jump amount
-		#if self.touching(enemy):
-		#	health.lives -= 1
-		#	health.showLives()
 		else:
-			self.rect.top = 230
 			self.can_jump = True
+			self._speed[1] += t/50.0	
+			if self.rect.top >= 230:
+				self._speed[1] = 0.0
 
 	def jump(self):
-		"""function which makes the player 'jump'"""
+		"""function which makes the player 'jump'"""	
+		if self.rect.top < 2:
+			self.can_jump = False
 		self.jumping = self.can_jump

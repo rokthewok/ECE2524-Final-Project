@@ -66,7 +66,7 @@ while True:
 
 	if event.type == KEYDOWN:
 		if event.key == K_UP:
-			player.jumping = True
+			player.jump()
 		if event.key == K_ESCAPE:
 			sys.exit(0)
 		if event.key == K_b:
