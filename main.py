@@ -31,7 +31,6 @@ clock = pygame.time.Clock()
 enemies = []
 for i in range(0,NUM_ENEMIES):
 	enemies.append(enemy.Enemy(("Images//birdfly.png", "Images//birdglide.png"),3))
-	enemies[i].setEnemy(300*random(),1024+500*random(),-5*random()-1)
 
 allsprites = pygame.sprite.OrderedUpdates((player,enemies))
 

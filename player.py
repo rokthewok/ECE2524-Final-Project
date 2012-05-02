@@ -13,17 +13,17 @@ class Player(Entity):
 
 	def update(self,t=0):
 		Entity.update(self,t)
-		print t, self.rect.topleft, self._speed 
+		#print t, self.rect.topleft, self._speed 
 		if self.jumping:
 			# if the jumping flag is true,
 			# call the jump function
-			self._speed[1] = -15.0
+			self.setSpeed('x',-10.0)
 			self.jumping = False
 		else:
 			self.can_jump = True
-			self._speed[1] += t/50.0	
+			self.setSpeed('x',self._speed[1]+t/50.0)	
 			if self.rect.top >= 230:
-				self._speed[1] = 0.0
+				self.setSpeed('x',0.0)
 
 	def jump(self):
 		"""function which makes the player 'jump'"""	
