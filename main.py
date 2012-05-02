@@ -49,7 +49,8 @@ while True:
 	
 	for guy in enemies:
 		if pygame.sprite.collide_rect( player, guy ):
-			player.decrementHealth()
+			player.takeDamage()
+			print "Health: %d" % player.getHealth()
 		if player.getHealth() == 0:
 			# gameover.gameOver()
 			pass
