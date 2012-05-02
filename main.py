@@ -19,7 +19,7 @@ level_one = level.Level("Images//background.png","Images//midground.png","level_
 test = Entity.Entity(("Images//dog_cape1.png","Images//dog_cape2.png","Images//background.png","Images//midground.png"),[0,200],3,1)
 player = player.Player(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
 
-main_menu = menu.Menu( "Images//main_menu.png" )
+main_menu = menu.Menu( "Images//main_menu.png", "Audio//main_theme.wav" )
 pause_menu = menu.PauseMenu( "Images//pausemenu.png" )
 
 window = pygame.display.set_mode((1024, 384))

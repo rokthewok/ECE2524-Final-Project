@@ -3,16 +3,20 @@ from pygame.locals import *
 
 class Menu(pygame.sprite.Sprite):
 
-	def __init__(self,filename):
+	def __init__(self,filename,audio_file):
 		pygame.sprite.Sprite.__init__(self)
 		self.image = pygame.image.load(filename)
 		self.rect = self.image.get_rect()
 		self.running = True
+		self.music_file = audio_file
 
 	def menu(self, screen):
 		"""function to show the menu"""
 		screen.blit(self.image, (0,0))
 		pygame.display.flip()
+		pygame.mixer.music.load( self.music_file )
+		pygame.mixer.music.play(-1)
+
 		while self.running:
 			event = pygame.event.poll()
 			if event.type == MOUSEBUTTONDOWN:
@@ -24,6 +28,7 @@ class Menu(pygame.sprite.Sprite):
 
 			if event.type == QUIT:
 				sys.exit(0)
+		pygame.mixer.music.stop()
 
 class PauseMenu(pygame.sprite.Sprite):
 
@@ -35,9 +40,11 @@ class PauseMenu(pygame.sprite.Sprite):
 
 	def menu(self,screen):
 		"""shows the pause menu"""
+		pygame.mixer.music.pause()
 		self.running = True
 		screen.blit(self.image, (0,0))
 		pygame.display.flip()
+
 		while self.running:
 			event = pygame.event.poll()
 			if event.type == MOUSEBUTTONDOWN:
@@ -58,3 +65,5 @@ class PauseMenu(pygame.sprite.Sprite):
 
 			if event.type == KEYDOWN and event.key == K_ESCAPE:
 				self.running = False
+
+		pygame.mixer.music.unpause()

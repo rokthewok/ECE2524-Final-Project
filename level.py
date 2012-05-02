@@ -17,9 +17,9 @@ class Level(object):
 		self.move = -1
 		self.mid_move = -2
 		
-		# once we have music, this will play it for the level
+		# this will play it for the level
 		#self.music = pygame.mixer.music.load(music_file)
-		#self.music.pygame.mixer.music.play(-1) # loop infinitely
+		#self.music.pygame.mixer.music.play(-1) loop infinitely
 
 	def update(self):
 		# checks to see if the background has scrolled off the screen; if it has, move it back to the start
