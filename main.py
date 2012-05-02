@@ -16,7 +16,7 @@ pygame.init()
 # initialize objects here
 #player = player.Player("dog_cape1.png", "dog_cape2.png")
 level_one = level.Level("Images//background.png","Images//midground.png","level_one_music.mp3")
-test = Entity.Entity(("Images//dog_cape1.png","Images//dog_cape2.png","Images//background.png","Images//midground.png"),[0,200],3,1)
+#test = Entity.Entity(("Images//dog_cape1.png","Images//dog_cape2.png","Images//background.png","Images//midground.png"),[0,200],3,1)
 player = player.Player(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
 
 main_menu = menu.Menu( "Images//main_menu.png", "Audio//main_theme.wav" )
@@ -33,7 +33,7 @@ for i in range(0,NUM_ENEMIES):
 	enemies.append(enemy.Enemy(("Images//birdfly.png", "Images//birdglide.png"),3))
 	enemies[i].setEnemy(300*random(),1024+500*random(),-5*random()-1)
 
-allsprites = pygame.sprite.OrderedUpdates((player,test,enemies))
+allsprites = pygame.sprite.OrderedUpdates((player,enemies))
 
 # open the starting menu
 main_menu.menu(screen)
@@ -61,7 +61,7 @@ while True:
 
 	if event.type == KEYDOWN:
 		if event.key == K_UP:
-			player.jumping = True
+			player.jump()
 		if event.key == K_ESCAPE:
 			pause_menu.menu(screen)
 		if event.key == K_b:

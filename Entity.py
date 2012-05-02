@@ -10,6 +10,9 @@ class Entity(pygame.sprite.Sprite):
 		self._startFrame = 0 #The start image of anim loop (zero-indexed)
 		self._endFrame = animEnd #The end image of anim loop (zero-indexed)
 		self._images = []
+
+		self._speed = [0.0,0.0]
+
 		#Load images and store in _images
 		for image in image_paths:
 			self._images.append( pygame.image.load(image) )
@@ -29,6 +32,16 @@ class Entity(pygame.sprite.Sprite):
 			
 			self.image = self._images[self._frame]
 			self._last_update = 0
+		#move the entity
+		dx = float((t/100.0)*self._speed[0])
+		dy = float((t/100.0)*self._speed[1])
+		self.rect.move_ip(dx,dy)
+		#check y bounds
+		if self.rect.top < 0:
+			self.rect.top = 0
+		if self.rect.top > 230:
+			self.rect.top = 230
+	
 
 	def setAnim(self,start,end):
 		self._startFrame = 0
