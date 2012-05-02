@@ -59,7 +59,13 @@ while True:
 			rock.setEnemy(100,500, -5)
 		elif pickEnemy < 3 & (not bone.moving):
 			bone.setEnemy(300,500, -5)
-			
+	
+	for guy in enemies:
+		if pygame.sprite.collide_rect( player, guy ):
+			player.decrementHealth()
+		if player.getHealth() == 0:
+			# gameover.gameOver()
+
 	event = pygame.event.poll()
 	#print event	# for debugging purposes
 	if event.type == QUIT:
