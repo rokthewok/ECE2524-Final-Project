@@ -20,7 +20,8 @@ class Entity(pygame.sprite.Sprite):
 		self.image = self._images[0]
 		#Set Position		
 		self.rect = self.image.get_rect()
-		self.rect.topleft = initial_pos
+		self.rect.inflate_ip( -self.rect.width / 2, -self.rect.height / 2 ) # shrink the hit box
+		self.rect.topleft = initial_pos		
 
 	def update(self,t):
 		#print self._last_update
