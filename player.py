@@ -9,6 +9,7 @@ class Player(Entity):
 		#health = health.Health("Images//bone.png")	
 		self.jumping = False # jumping flag
 		self.can_jump = True
+		self.health = 3
 
 	def update(self,t=0):
 		Entity.update(self,t)
@@ -29,3 +30,11 @@ class Player(Entity):
 		if self.rect.top < 2:
 			self.can_jump = False
 		self.jumping = self.can_jump
+
+	def decrementHealth(self):
+		"""decrement the player's health"""
+		self.health -= 1
+
+	def getHealth(self):
+		"""return the player's health"""
+		return self.health
