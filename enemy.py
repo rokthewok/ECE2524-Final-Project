@@ -11,7 +11,7 @@ class Enemy(Entity):
 	def update(self,t=0):
 		Entity.update(self,t)
 		if self.moving:
-			self.rect.left -= self.moveSpeed
+			self.rect.left += self.moveSpeed
 		if self.rect.right < 0:
 			self.moving = False
 

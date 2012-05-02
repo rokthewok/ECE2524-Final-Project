@@ -22,10 +22,6 @@ player = player.Player(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
 main_menu = menu.Menu( "Images//main_menu.png" )
 pause_menu = menu.PauseMenu( "Images//pausemenu.png" )
 
-enemy1 = enemy.Enemy(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
-rock = enemy.Enemy(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
-bone = enemy.Enemy(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
-
 window = pygame.display.set_mode((1024, 384))
 pygame.display.set_caption('Go Dog, Go!')
 screen = pygame.display.get_surface()
@@ -34,13 +30,15 @@ clock = pygame.time.Clock()
 
 enemies = []
 for i in range(0,NUM_ENEMIES):
-	enemies.append(enemy.Enemy(("Images//dog_cape1.png", "Images//dog_cape2.png"),3))
-	enemies[i].setEnemy(1000*random()+200,384*random(),-5*random()-1)
+	enemies.append(enemy.Enemy(("Images//birdfly.png", "Images//birdglide.png"),3))
+	enemies[i].setEnemy(300*random(),1024,-5*random()-1)
 
-allsprites = pygame.sprite.OrderedUpdates((player,test,enemies,enemy1,rock,bone))
+allsprites = pygame.sprite.OrderedUpdates((player,test,enemies))
 
 # open the starting menu
 main_menu.menu(screen)
+
+score = 0
 
 while True:
 	# catch event
@@ -90,6 +88,8 @@ while True:
 	allsprites.update(elapsed_time)
 	allsprites.draw(screen)
 	
+	score += 1
+
 	pygame.display.flip()
 exit()
 
