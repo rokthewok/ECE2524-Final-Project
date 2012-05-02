@@ -63,6 +63,7 @@ while True:
 			player.decrementHealth()
 		if player.getHealth() == 0:
 			# gameover.gameOver()
+			pass
 
 	event = pygame.event.poll()
 	#print event	# for debugging purposes
