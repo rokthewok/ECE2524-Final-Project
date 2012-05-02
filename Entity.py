@@ -43,6 +43,11 @@ class Entity(pygame.sprite.Sprite):
 		if self.rect.top > 230:
 			self.rect.top = 230
 	
+	def setSpeed(self,x,y):
+		if not x=='x':
+			self._speed[0] = float(x)	
+		if not y=='x':
+			self._speed[1] = float(y)	
 
 	def setAnim(self,start,end):
 		self._startFrame = 0
