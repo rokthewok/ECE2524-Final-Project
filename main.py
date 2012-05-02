@@ -20,6 +20,7 @@ test = Entity.Entity(("Images//dog_cape1.png","Images//dog_cape2.png","Images//b
 player = player.Player(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
 
 main_menu = menu.Menu( "Images//main_menu.png" )
+pause_menu = menu.PauseMenu( "Images//pausemenu.png" )
 
 enemy1 = enemy.Enemy(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
 rock = enemy.Enemy(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
@@ -68,7 +69,7 @@ while True:
 		if event.key == K_UP:
 			player.jumping = True
 		if event.key == K_ESCAPE:
-			sys.exit(0)
+			pause_menu.menu(screen)
 		if event.key == K_b:
 			test.setAnim(0,test._endFrame%4+1)
 			print "test._startFrame=",test._startFrame," test._endFrame=",test._endFrame
