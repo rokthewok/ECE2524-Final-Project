@@ -1,4 +1,4 @@
-import pygame
+import pygame,sys
 from pygame.locals import *
 
 class Menu(pygame.sprite.Sprite):
@@ -22,3 +22,35 @@ class Menu(pygame.sprite.Sprite):
 				location[1] > 265 and location[1] < 300:
 					self.running = False
 
+			if event.type == QUIT:
+				sys.exit(0)
+
+class PauseMenu(pygame.sprite.Sprite):
+
+	def __init__(self,filename):
+		pygame.sprite.Sprite.__init__(self)
+		self.image = pygame.image.load(filename)
+		self.rect = self.image.get_rect()
+		self.running = True
+
+	def menu(self,screen):
+		"""shows the pause menu"""
+		while self.running:
+			screen.blit(self.image, (0,0))
+			pygame.display.flip()
+			even = pygame.event.poll()
+			if event.type == MOUSEBUTTONDOWN:
+				location = pygame.mouse.get_pos()
+				
+				# resume
+				if location[0] > 381 and location[0] < 610:
+					# resume
+					if location[1] > 243 and location[1] < 286:
+						self.running = False
+				
+					# exit
+					if location[0] > 302 and location[1] < 342:
+						sys.exit(0)
+
+			if event.type == KEYDOWN and event.key == K_ESCAPE or event.type == QUIT:
+				sys.exit(0)

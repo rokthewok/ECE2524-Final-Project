@@ -10,6 +10,7 @@ class Player(Entity):
 		self.jumping = False # jumping flag
 		self.can_jump = True
 		self.y_vel = 0 # amount of jump movement per update
+		self.health = 3
 
 	def update(self,t=0):
 		Entity.update(self,t)	
@@ -38,8 +39,7 @@ class Player(Entity):
 			
 			self.rect = self.rect.move(0, self.y_vel) # move upwards by self.jump amount
 		#if self.touching(enemy):
-		#	health.lives -= 1
-		#	health.showLives()
+		#	self.health -= 1
 		else:
 			self.rect.top = 230
 			self.can_jump = True
