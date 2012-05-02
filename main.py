@@ -21,6 +21,10 @@ player = player.Player(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
 
 main_menu = menu.Menu( "Images//main_menu.png" )
 
+enemy1 = enemy.Enemy(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
+rock = enemy.Enemy(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
+bone = enemy.Enemy(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
+
 window = pygame.display.set_mode((1024, 384))
 pygame.display.set_caption('Go Dog, Go!')
 screen = pygame.display.get_surface()
@@ -32,8 +36,7 @@ for i in range(0,NUM_ENEMIES):
 	enemies.append(enemy.Enemy(("Images//dog_cape1.png", "Images//dog_cape2.png"),3))
 	enemies[i].setEnemy(1000*random()+200,384*random(),-5*random()-1)
 
-allsprites = pygame.sprite.OrderedUpdates((player,test,enemies))
-
+allsprites = pygame.sprite.OrderedUpdates((player,test,enemies,enemy1,rock,bone))
 
 # open the starting menu
 main_menu.menu(screen)
@@ -45,6 +48,17 @@ while True:
 	elapsed_time = clock.tick(60)
 	#print elapsed_time
 
+	spawnEnemy = random()
+
+	if spawnEnemy > 0.95:
+		pickEnemy = 3*random()
+		if pickEnemy < 1 & (not enemy1.moving):
+			enemy1.setEnemy(200, 500, -5)
+		elif pickEnemy < 2 & (not rock.moving):
+			rock.setEnemy(100,500, -5)
+		elif pickEnemy < 3 & (not bone.moving):
+			bone.setEnemy(300,500, -5)
+			
 	event = pygame.event.poll()
 	#print event	# for debugging purposes
 	if event.type == QUIT:
