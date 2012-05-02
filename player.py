@@ -1,4 +1,5 @@
 # player class which inherits from pygame sprites
+import pygame
 from Entity import Entity
 #import health
 
@@ -11,9 +12,15 @@ class Player(Entity):
 		self.can_jump = True
 		self.health = 3
 
+		# scale images for player
+		image_set = []
+		for image in self._images:
+			image_set.append( ( pygame.transform.scale( image, (130,67) ) ) )
+		self._images = image_set
+
 	def update(self,t=0):
 		Entity.update(self,t)
-		print t, self.rect.topleft, self._speed 
+		#print t, self.rect.topleft, self._speed 
 		if self.jumping:
 			# if the jumping flag is true,
 			# call the jump function
