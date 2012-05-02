@@ -38,8 +38,7 @@ class Player(Entity):
 				self.accel_delay = 6
 			
 			self.rect = self.rect.move(0, self.y_vel) # move upwards by self.jump amount
-		#if self.touching(enemy):
-		#	self.health -= 1
+
 		else:
 			self.rect.top = 230
 			self.can_jump = True
@@ -47,3 +46,11 @@ class Player(Entity):
 	def jump(self):
 		"""function which makes the player 'jump'"""
 		self.jumping = self.can_jump
+
+	def decrementHealth(self):
+		"""decrement the player's health"""
+		self.health -= 1
+
+	def getHealth(self):
+		"""return the player's health"""
+		return self.health

@@ -46,7 +46,25 @@ while True:
 	# update objects
 	elapsed_time = clock.tick(60)
 	#print elapsed_time
-			
+
+	spawnEnemy = random()
+
+	if spawnEnemy > 0.95:
+		pickEnemy = 3*random()
+		if pickEnemy < 1 & (not enemy1.moving):
+			enemy1.setEnemy(200, 500, -5)
+		elif pickEnemy < 2 & (not rock.moving):
+			rock.setEnemy(100,500, -5)
+		elif pickEnemy < 3 & (not bone.moving):
+			bone.setEnemy(300,500, -5)
+	
+	for guy in enemies:
+		if pygame.sprite.collide_rect( player, guy ):
+			player.decrementHealth()
+		if player.getHealth() == 0:
+			# gameover.gameOver()
+			pass
+
 	event = pygame.event.poll()
 	#print event	# for debugging purposes
 	if event.type == QUIT:
