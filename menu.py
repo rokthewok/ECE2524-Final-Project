@@ -11,9 +11,9 @@ class Menu(pygame.sprite.Sprite):
 
 	def menu(self, screen):
 		"""function to show the menu"""
+		screen.blit(self.image, (0,0))
+		pygame.display.flip()
 		while self.running:
-			screen.blit(self.image, (0,0))
-			pygame.display.flip()
 			event = pygame.event.poll()
 			if event.type == MOUSEBUTTONDOWN:
 				location = pygame.mouse.get_pos()
@@ -53,5 +53,8 @@ class PauseMenu(pygame.sprite.Sprite):
 					if location[1] > 302 and location[1] < 342:
 						sys.exit(0)
 
-			if event.type == KEYDOWN and event.key == K_ESCAPE or event.type == QUIT:
+			if event.type == QUIT:
 				sys.exit(0)
+
+			if event.type == KEYDOWN and event.key == K_ESCAPE:
+				self.running = False
