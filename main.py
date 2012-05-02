@@ -3,9 +3,11 @@
 import pygame, sys
 from pygame.locals import *
 import player
+import enemy
 import level
 import Entity
 import menu
+from random import random
 # this contains the main loop of the game
 
 pygame.init()
@@ -14,6 +16,7 @@ pygame.init()
 level_one = level.Level("Images//background.png","Images//midground.png","level_one_music.mp3")
 test = Entity.Entity(("Images//dog_cape1.png","Images//dog_cape2.png","Images//background.png","Images//midground.png"),[0,200],3,1)
 player = player.Player(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
+enemy = enemy.Enemy(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
 
 window = pygame.display.set_mode((1024, 384))
 pygame.display.set_caption('Go Dog, Go!')
@@ -21,7 +24,7 @@ screen = pygame.display.get_surface()
 
 clock = pygame.time.Clock()
 
-objects = pygame.sprite.OrderedUpdates((player,test))
+objects = pygame.sprite.OrderedUpdates((player,test,enemy))
 
 # open the starting menu
 main_menu = menu.Menu( "Images//main_menu.png" )
@@ -33,6 +36,14 @@ while True:
 	# update objects
 	elapsed_time = clock.tick(60)
 	#print elapsed_time
+
+	spawnEnemy = random()
+
+	if spawnEnemy > 0.99:
+		pickEnemy = 1*random()
+		if pickEnemy < 1:
+			enemy.setEnemy(50, 50, 3)
+			
 
 	event = pygame.event.poll()
 	#print event	# for debugging purposes
