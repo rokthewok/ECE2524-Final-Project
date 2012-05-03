@@ -7,6 +7,7 @@ import enemy
 import level
 import Entity
 import menu
+import statcounter
 from random import random
 # this contains the main loop of the game
 
@@ -36,14 +37,15 @@ allsprites = pygame.sprite.OrderedUpdates((player,enemies))
 main_menu.menu(screen)
 # once the main menu is exited, start the level music THIS SHOULD BE ALTERED so we can load any level's music at a given time
 level_one.start_music()
-score = 0
+#create stat counter
+stats = statcounter.StatCounter()
+statsgroup = pygame.sprite.GroupSingle(stats)
 
 while True:
 	# catch event
 	# respond to event
 	# update objects
 	elapsed_time = clock.tick(60)
-	#print elapsed_time
 	
 	for guy in enemies:
 		if pygame.sprite.collide_rect( player, guy ):
@@ -62,22 +64,22 @@ while True:
 		if event.key == K_UP:
 			player.jump()
 		if event.key == K_ESCAPE:
-			pause_menu.menu(screen)
-		if event.key == K_b:
-			test.setAnim(0,test._endFrame%4+1)
-			print "test._startFrame=",test._startFrame," test._endFrame=",test._endFrame
+			pause_menu.menu(screen,clock)
+		#if event.key == K_b:
+			#test.setAnim(0,test._endFrame%4+1)
+			#print "test._startFrame=",test._startFrame," test._endFrame=",test._endFrame
 
-	screen.fill((0,0,0))
 	# update and draw objects
 
 	#test.update(time_passed_seconds)
 	level_one.update()
 	level_one.draw(screen)
+	
+	stats.update(player.getHealth(), elapsed_time)
 
 	allsprites.update(elapsed_time)
 	allsprites.draw(screen)
-	
-	score += 1
+	statsgroup.draw(screen)
 
 	pygame.display.flip()
 exit()
