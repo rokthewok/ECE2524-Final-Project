@@ -15,6 +15,7 @@ class Menu(pygame.sprite.Sprite):
 		screen.blit(self.image, (0,0))
 		pygame.display.flip()
 		pygame.mixer.music.load( self.music_file )
+		pygame.mixer.music.set_volume(0.7)
 		pygame.mixer.music.play(-1)
 
 		while self.running:
@@ -40,7 +41,7 @@ class PauseMenu(pygame.sprite.Sprite):
 
 	def menu(self,screen):
 		"""shows the pause menu"""
-		pygame.mixer.music.pause()
+		pygame.mixer.music.set_volume(0.2)
 		self.running = True
 		screen.blit(self.image, (0,0))
 		pygame.display.flip()
@@ -66,4 +67,4 @@ class PauseMenu(pygame.sprite.Sprite):
 			if event.type == KEYDOWN and event.key == K_ESCAPE:
 				self.running = False
 
-		pygame.mixer.music.unpause()
+		pygame.mixer.music.set_volume(1)
