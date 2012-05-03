@@ -9,6 +9,8 @@ class Level(object):
 		self._mid_image0 = pygame.image.load(midgd_filename)
 		self._mid_image1 = pygame.image.load(midgd_filename)
 		
+		self._audio_file = music_file
+
 		self._rect0 = self._image0.get_rect(topleft=(0,0))
 		self._rect1 = self._image1.get_rect(topleft=(2048,0))
 		self._mid_rect0 = self._mid_image0.get_rect(topleft=(0,0))
@@ -18,8 +20,6 @@ class Level(object):
 		self.mid_move = -2
 		
 		# this will play it for the level
-		#self.music = pygame.mixer.music.load(music_file)
-		#self.music.pygame.mixer.music.play(-1) loop infinitely
 
 	def update(self):
 		# checks to see if the background has scrolled off the screen; if it has, move it back to the start
@@ -45,3 +45,8 @@ class Level(object):
 
 		screen.blit( self._mid_image0, self._mid_rect0 )
 		screen.blit( self._mid_image1, self._mid_rect1 )
+
+	def start_music(self):
+		# function to start the music
+		pygame.mixer.music.load(self._audio_file)
+		pygame.mixer.music.play(-1)
