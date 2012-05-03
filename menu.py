@@ -39,7 +39,7 @@ class PauseMenu(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.running = True
 
-	def menu(self,screen):
+	def menu(self,screen,clock):
 		"""shows the pause menu"""
 		pygame.mixer.music.set_volume(0.2)
 		self.running = True
@@ -47,6 +47,7 @@ class PauseMenu(pygame.sprite.Sprite):
 		pygame.display.flip()
 
 		while self.running:
+			clock.tick(60) # keep the clock ticking
 			event = pygame.event.poll()
 			if event.type == MOUSEBUTTONDOWN:
 				location = pygame.mouse.get_pos()
