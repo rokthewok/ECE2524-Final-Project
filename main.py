@@ -14,9 +14,7 @@ NUM_ENEMIES = 5
 
 pygame.init()
 # initialize objects here
-#player = player.Player("dog_cape1.png", "dog_cape2.png")
-level_one = level.Level("Images//background.png","Images//midground.png","level_one_music.mp3")
-#test = Entity.Entity(("Images//dog_cape1.png","Images//dog_cape2.png","Images//background.png","Images//midground.png"),[0,200],3,1)
+level_one = level.Level("Images//background.png","Images//midground.png","Audio//level_one_music.wav")
 player = player.Player(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
 
 main_menu = menu.Menu( "Images//main_menu.png", "Audio//main_theme.wav" )
@@ -36,7 +34,8 @@ allsprites = pygame.sprite.OrderedUpdates((player,enemies))
 
 # open the starting menu
 main_menu.menu(screen)
-
+# once the main menu is exited, start the level music THIS SHOULD BE ALTERED so we can load any level's music at a given time
+level_one.start_music()
 score = 0
 
 while True:
@@ -49,7 +48,7 @@ while True:
 	for guy in enemies:
 		if pygame.sprite.collide_rect( player, guy ):
 			player.takeDamage()
-			print "Health: %d" % player.getHealth()
+			#print "Health: %d" % player.getHealth() # test purposes
 		if player.getHealth() == 0:
 			# gameover.gameOver()
 			pass
