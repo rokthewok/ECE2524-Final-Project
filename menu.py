@@ -17,6 +17,7 @@ class Menu(pygame.sprite.Sprite):
 		pygame.mixer.music.load( self.music_file )
 		pygame.mixer.music.set_volume(0.7)
 		pygame.mixer.music.play(-1)
+		self.running = True
 
 		while self.running:
 			event = pygame.event.poll()
@@ -69,3 +70,33 @@ class PauseMenu(pygame.sprite.Sprite):
 				self.running = False
 
 		pygame.mixer.music.set_volume(1)
+
+class GameOverMenu(pygame.sprite.Sprite):
+
+	def __init__(self, filename):
+		pygame.sprite.Sprite.__init__(self)
+		self.image = pygame.image.load(filename)
+		self.rect = self.image.get_rect()
+		self.running = True
+
+	def menu(self, screen):
+		screen.blit(self.image, (0,0))
+		self.running = True
+		pygame.mixer.music.stop()
+		pygame.display.flip()
+
+		while self.running:
+			event = pygame.event.poll()
+			if event.type == MOUSEBUTTONDOWN:
+				location = pygame.mouse.get_pos()
+
+				if location[0] > 160 and location[0] < 417:
+					# main menu
+					if location[1] > 200 and location[1] < 260:
+						return True
+					# exit
+					if location[1] > 285 and location[1] < 340:
+						return False
+				
+			if event.type == QUIT:
+				sys.exit(0)
