@@ -34,9 +34,9 @@ class Player(Entity):
 			if self.rect.top >= 230:
 				self.setSpeed('x',0.0)
 
-		# limit duration of post damage invincibility (1000 ms)
+		# limit duration of post damage invincibility (2500 ms)
 		if self._invincible == True:
-			if self._invincible_time < 1000:
+			if self._invincible_time < 2500:
 				self._invincible_time += t
 			else:
 				self._invincible = False
@@ -57,3 +57,7 @@ class Player(Entity):
 	def getHealth(self):
 		"""return the player's health"""
 		return self.health
+
+	def resetHealth(self):
+		"""reset the player's health to full value"""
+		self.health = 10
