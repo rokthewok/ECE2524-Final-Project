@@ -12,6 +12,7 @@ class Player(Entity):
 		self.health = 10
 		self._invincible = False # for when player collides with an enemy
 		self._invincible_time = 0 # timer for invincibility
+		self._speedDecay = [0.9, 1.0]
 
 		# scale images for player
 		image_set = []
@@ -26,7 +27,7 @@ class Player(Entity):
 		if self.jumping:
 			# if the jumping flag is true,
 			# call the jump function
-			self.setSpeed('x',-10.0)
+			self.setSpeed('x',-14.0)
 			self.jumping = False
 		else:
 			self.can_jump = True
