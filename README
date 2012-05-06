@@ -44,4 +44,23 @@
    -       ::::::::::-                                         ::::=||||||i|||`             
              ::-- -                                             :::::|||||||>`              
                                                                  .:::=+||>                  
-                                                                   :::-                     
+                                                                   :::-                    
+
+To run this game you will need:
+
+	pygame: To get pygame, search google based on your operating system/distro.
+		For Arch, do pacman -Sy pygame
+
+	python2
+
+	Now run the game as a script to start.
+
+How to play:
+
+	The game is pretty simple, just dodge the birds and collect power-ups along the way.
+	Press the up key to jump and gravity will allow you to come back down.
+	You start off with 10 lives, touching a bird will make you lose one.
+
+Power-ups:
+	Bone: Makes you gain one life
+	Tennis Ball: You gain 2500 points

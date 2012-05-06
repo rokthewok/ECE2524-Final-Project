@@ -17,5 +17,4 @@ class StatCounter(pygame.sprite.Sprite):
 		self.score += elapsed_time / 10
 		self.string = "Health: %d Score: %d" % (health, self.score)
 
-		self.image = self.font.render( self.string, 1, (0,0,0), (255,255,255) )
-		
+		self.image = self.font.render( self.string, 1, (0,0,0), (255,255,255) )	
