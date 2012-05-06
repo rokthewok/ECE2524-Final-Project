@@ -13,7 +13,7 @@ class PowerUp(Entity):
 			self.setReady()
 
 	def setReady(self):
-		self.rect.left = 3072 + 1024*random()
+		self.rect.left = 2048 + 1024*random()
 		self.rect.top = 300*random()
 		self.setSpeed(0.0,0.0)
 		self.readyToGo = True

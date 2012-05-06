@@ -16,7 +16,8 @@ level_one = level.Level("Images//background.png","Images//midground.png","Audio/
 player = player.Player(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
 
 bonePowerUp = powerup.PowerUp(("Images//bone.png", "Images//bone.png"),3)
-currentPowerUp = random()
+tennisBallPowerUp = powerup.PowerUp(("Images//tennisball.png", "Images//tennisball.png"),3)
+currentPowerUp = 2*random()
 
 main_menu = menu.Menu( "Images//main_menu.png", "Audio//main_theme.wav" )
 pause_menu = menu.PauseMenu( "Images//pausemenu.png" )
@@ -40,7 +41,7 @@ for i in range(0,NUM_ENEMIES):
 	enemies.append(enemy.Enemy(("Images//birdfly.png", "Images//birdglide.png"),3))
 
 # create a group to update the sprites in order
-allsprites = pygame.sprite.OrderedUpdates((player,enemies,bonePowerUp))
+allsprites = pygame.sprite.OrderedUpdates((player,enemies,bonePowerUp,tennisBallPowerUp))
 
 while True:
 
@@ -72,8 +73,15 @@ while True:
 					bonePowerUp.setGo()
 				if pygame.sprite.collide_rect(player, bonePowerUp):
 					player.healHealth()
-					currentPowerUp = 1*random()
+					currentPowerUp = 2*random()
 					bonePowerUp.setReady()
+			elif currentPowerUp < 2: #tennisBallPowerUp
+				if tennisBallPowerUp.readyToGo == True:
+					tennisBallPowerUp.setGo()
+				if pygame.sprite.collide_rect(player, tennisBallPowerUp):
+					stats.score += 2500
+					currentPowerUp = 2*random()
+					tennisBallPowerUp.setReady()
 
 			event = pygame.event.poll()
 			#print event	# for debugging purposes
