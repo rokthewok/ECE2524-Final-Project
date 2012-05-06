@@ -2,31 +2,13 @@
 ### NOTE: This document outlines a previous game design concept which is no longer being implemented for this project. ###
 
 GAME OVERVIEW:
-This game will be written in Python and utilize Pygame, an open source game design library in Python. This library will handle rendering, events and other aspects of game programming unrelated to logic. Sprites and other graphics will be hand drawn.
+This game will be written in Python and utilize Pygame, an open source game design library in Python. This library will handle rendering, events and other aspects of game programming unrelated to logic. Images will be hand drawn using the GNU Image Manipulation Program, or GIMP.
 
-As of now, the game will feature pseudo-sandbox style gameplay, offering a fair amount of freedom to the player as to what area of the game he or she should like to approach next. However, the game itself will be highly character-driven. Story-driven would be an inappropriate description, as the game will be less about a plot and more about the development of the protagonist.
+GAMEPLAY:
+In this game, you play a dog, but not just any dog, Super Dog! The aim of the game is to avoid obstacles (e.g. rocks, birds, hydrants). You start with 10 health, and as you collide with enemies, you lose 1 health point per enemy. The controls are simple:
 
-The gameplay will be comprised of several "minigames" which have distinct and discrete goals which the player will strive to complete. Until all the minigames have been completed, the player cannot advance to the endgame.
+Action		Key
+jump		UP
+pause		escape
 
-THE MINIGAMES:
-The minigame breakdown is as follows:
-	- a short dungeon crawl minigame
-	- a sidescroller minigame
-	- a cooking minigame
-	- a treasure hunt minigame
-
-1. Dungeon Crawl
-Dungeon crawl will feature traditional action-RPG, hack-n-slash, style gameplay, perhaps in keeping with the overhead Zelda games. The player will be given one close ranged attack and one long ranged attack. The goal of the crawl is to reach the "end" of the dungeon and collect the treasure. Several enemies will exist in the dungeon, and there may be a boss battle at the end.
-
-2. Sidescroller
-The sidescroller will be much like any traditional sidescroller. The goal will be to avoid obstacles and reach the end of the level.
-
-3. Cooking
-The player must create, from various ingredients, dishes specified at the start of the minigame. The player will be given clues as to what ingredients should go into the dish, but no explicit instructions will be given.
-
-4. Treasure Hunt
-Treasure hunt will be similar to an Easter Egg hunt, in which the character must collect various listed items from an area, probably within a time limit.
-
-
-GAME LAYOUT:
-The "world map" will simply be an area which has access to the player's house and the 4 minigame zones. Touching the house will let the player into his or her home. After playing a single minigame, the player MUST sleep. Touching any of the four zones will start the respective minigame for that zone. Additionally, there will be an exit which leads to the endgame. The player will be rejected from this zone until all the minigames have been completed.
+That's it! Good luck, the world is counting on you!
