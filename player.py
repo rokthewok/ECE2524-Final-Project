@@ -13,6 +13,8 @@ class Player(Entity):
 		self._invincible = False # for when player collides with an enemy
 		self._invincible_time = 0 # timer for invincibility
 		self._speedDecay = [0.9, 1.0]
+		self._invisible_pic = self.image.copy()
+		self._invisible_pic.fill([0,0,0,0])
 
 		# scale images for player
 		image_set = []
@@ -39,6 +41,10 @@ class Player(Entity):
 		if self._invincible == True:
 			if self._invincible_time < 2500:
 				self._invincible_time += t
+				if ((self._invincible_time /100)%2) == 0:
+					self.image = self._invisible_pic
+				else:
+					self.image = self._images[0]
 			else:
 				self._invincible = False
 				self._invincible_time = 0
