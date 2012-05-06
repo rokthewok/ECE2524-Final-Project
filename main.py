@@ -2,7 +2,7 @@
 
 import pygame, sys
 from pygame.locals import *
-import player, enemy, level, Entity, menu, statcounter
+import player, enemy, powerup, level, Entity, menu, statcounter
 from random import random
 from gamestate import GameState
 # this contains the main loop of the game
@@ -14,6 +14,9 @@ pygame.init()
 # initialize objects here
 level_one = level.Level("Images//background.png","Images//midground.png","Audio//level_one_music.wav")
 player = player.Player(("Images//dog_cape1.png", "Images//dog_cape2.png"),3)
+
+bonePowerUp = powerup.PowerUp(("Images//bone.png", "Images//bone.png"),3)
+currentPowerUp = random()
 
 main_menu = menu.Menu( "Images//main_menu.png", "Audio//main_theme.wav" )
 pause_menu = menu.PauseMenu( "Images//pausemenu.png" )
@@ -37,7 +40,7 @@ for i in range(0,NUM_ENEMIES):
 	enemies.append(enemy.Enemy(("Images//birdfly.png", "Images//birdglide.png"),3))
 
 # create a group to update the sprites in order
-allsprites = pygame.sprite.OrderedUpdates((player,enemies))
+allsprites = pygame.sprite.OrderedUpdates((player,enemies,bonePowerUp))
 
 while True:
 
@@ -63,6 +66,14 @@ while True:
 					#print "Health: %d" % player.getHealth() # test purposes
 				if player.getHealth() == 0:
 					state = GameState.GAMEOVER
+
+			if currentPowerUp < 1: #bonePowerUp
+				if bonePowerUp.readyToGo == True:
+					bonePowerUp.setGo()
+				if pygame.sprite.collide_rect(player, bonePowerUp):
+					player.healHealth()
+					currentPowerUp = 1*random()
+					bonePowerUp.setReady()
 
 			event = pygame.event.poll()
 			#print event	# for debugging purposes

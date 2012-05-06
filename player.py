@@ -54,6 +54,10 @@ class Player(Entity):
 			# make player invincible for 0.5 seconds
 			self._invincible = True
 
+	def healHealth(self):
+		"""Player gains health by touching a bone"""
+		self.health += 1
+
 	def getHealth(self):
 		"""return the player's health"""
 		return self.health
