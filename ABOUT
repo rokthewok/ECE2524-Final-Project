@@ -5,10 +5,18 @@ GAME OVERVIEW:
 This game will be written in Python and utilize Pygame, an open source game design library in Python. This library will handle rendering, events and other aspects of game programming unrelated to logic. Images will be hand drawn using the GNU Image Manipulation Program, or GIMP.
 
 GAMEPLAY:
-In this game, you play a dog, but not just any dog, Super Dog! The aim of the game is to avoid obstacles (e.g. rocks, birds, hydrants). You start with 10 health, and as you collide with enemies, you lose 1 health point per enemy. The controls are simple:
+In this game, you play a dog, but not just any dog, Super Dog! The aim of the game is to avoid obstacles and collect bonuses/powerups. You start with 10 health, and as you collide with enemies, you lose 1 health point per enemy. The controls are simple:
 
 Action		Key
 jump		UP
+move left	LEFT
+move right	RIGHT
 pause		escape
+
+AVOID:
+- birds
+
+COLLECT:
+- Tennis balls
 
 That's it! Good luck, the world is counting on you!
