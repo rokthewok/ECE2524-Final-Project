@@ -65,8 +65,8 @@ while True:
 				if pygame.sprite.collide_rect( player, guy ):
 					player.takeDamage()
 					#print "Health: %d" % player.getHealth() # test purposes
-				if player.getHealth() == 0:
-					state = GameState.GAMEOVER
+					if player.getHealth() == 0:
+						state = GameState.GAMEOVER
 
 			if currentPowerUp < 1: #bonePowerUp
 				if bonePowerUp.readyToGo == True:
@@ -91,8 +91,12 @@ while True:
 			if event.type == KEYDOWN:
 				if event.key == K_UP:
 					player.jump()
-				if event.key == K_ESCAPE:
+				elif event.key == K_ESCAPE:
 					pause_menu.menu(screen,clock)
+				elif event.key == K_LEFT:
+					player.moveHoriz(-15)
+				elif event.key == K_RIGHT:
+					player.moveHoriz(15)
 				#if event.key == K_b:
 					#test.setAnim(0,test._endFrame%4+1)
 					#print "test._startFrame=",test._startFrame," test._endFrame=",test._endFrame
