@@ -10,7 +10,9 @@ class Entity(pygame.sprite.Sprite):
 		self._startFrame = 0 #The start image of anim loop (zero-indexed)
 		self._endFrame = animEnd #The end image of anim loop (zero-indexed)
 		self._images = []
-
+		
+		#Set up the speed and decay speed defaults (set to a number over 1 to
+		#			cause a speed up)
 		self._speed = [0.0,0.0]
 		self._speedDecay = [1.0, 1.0]
 
@@ -34,9 +36,12 @@ class Entity(pygame.sprite.Sprite):
 			
 			self.image = self._images[self._frame]
 			self._last_update = 0
-		#move the entity
+		
+		#Cause decay of speed (if it is set to decay)
+		# Note: Can cause things to speed up too
 		self._speed[0] *= self._speedDecay[0]
 		self._speed[1] *= self._speedDecay[1]
+		#move the entity
 		dx = float((t/100.0)*self._speed[0])
 		dy = float((t/100.0)*self._speed[1])
 		self.rect.move_ip(dx,dy)
@@ -47,9 +52,12 @@ class Entity(pygame.sprite.Sprite):
 			self.rect.top = 230
 	
 	def moveHoriz(self, dx):
+		"""Adds the provided value to the entity's x velocity"""
 		self._speed[0] += dx
 	
 	def setSpeed(self,x,y):
+		"""Sets the provided speed to the provided value. If you don't want to
+		change the value, pass in 'x' for the parameter"""
 		if not x=='x':
 			self._speed[0] = float(x)	
 		if not y=='x':

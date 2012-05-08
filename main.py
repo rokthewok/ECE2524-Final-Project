@@ -89,15 +89,15 @@ while True:
 				sys.exit(0)
 
 			if event.type == KEYDOWN:
-				if event.key == K_UP:
+				if event.key == K_UP or event.key == K_SPACE: #Jump button 
 					player.jump()
-				elif event.key == K_ESCAPE:
+				elif event.key == K_ESCAPE: #Pause button
 					pause_menu.menu(screen,clock)
-				elif event.key == K_LEFT:
+				elif event.key == K_LEFT: #Move left
 					player.moveHoriz(-15)
-				elif event.key == K_RIGHT:
+				elif event.key == K_RIGHT: #Move right
 					player.moveHoriz(15)
-				#if event.key == K_b:
+				#if event.key == K_b: #old test code
 					#test.setAnim(0,test._endFrame%4+1)
 					#print "test._startFrame=",test._startFrame," test._endFrame=",test._endFrame
 
@@ -115,7 +115,7 @@ while True:
 			pygame.display.flip()
 
 	if state == GameState.GAMEOVER:
-		decision = gameover_menu.menu(screen)
+		decision = gameover_menu.menu(screen) #Returns whether to start over or quit
 		if decision == True:
 			player.resetHealth()
 			state = GameState.MAINMENU
