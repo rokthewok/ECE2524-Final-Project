@@ -1,5 +1,16 @@
 					GO DOG, GO!
 **Please read the ABOUT file for gameplay instructions
+========================================================
+RUNNING THE GAME:
+To run the came, simply modify main so that it is executable, i.e, type this at the terminal:
+
+'chmod -x main.py'
+
+After this, you can begin the program by simply typing:
+
+'./main.py'
+
+Enjoy!
                                                                                             
                              ..;:..                                                         
                            ::;:::;;:::.                                                     
