@@ -5,7 +5,7 @@ class Menu(pygame.sprite.Sprite):
 
 	def __init__(self,filename,audio_file):
 		pygame.sprite.Sprite.__init__(self)
-		self.image = pygame.image.load(filename)
+		self.image = pygame.image.load(filename) # loads the menu image
 		self.rect = self.image.get_rect()
 		self.running = True
 		self.music_file = audio_file
@@ -14,7 +14,7 @@ class Menu(pygame.sprite.Sprite):
 		"""function to show the menu"""
 		screen.blit(self.image, (0,0))
 		pygame.display.flip()
-		pygame.mixer.music.load( self.music_file )
+		pygame.mixer.music.load( self.music_file ) # play the main menu music
 		pygame.mixer.music.set_volume(0.7)
 		pygame.mixer.music.play(-1)
 		self.running = True
@@ -24,6 +24,7 @@ class Menu(pygame.sprite.Sprite):
 			if event.type == MOUSEBUTTONDOWN:
 				location = pygame.mouse.get_pos()
 				# print location
+				# start
 				if location[0] > 350 and location[0] < 625  and \
 				location[1] > 265 and location[1] < 300:
 					self.running = False
@@ -42,18 +43,19 @@ class PauseMenu(pygame.sprite.Sprite):
 
 	def menu(self,screen,clock):
 		"""shows the pause menu"""
-		pygame.mixer.music.set_volume(0.2)
+		pygame.mixer.music.set_volume(0.2) # decrease volume
 		self.running = True
 		screen.blit(self.image, (0,0))
 		pygame.display.flip()
 
+		# menu loop
 		while self.running:
-			clock.tick(60) # keep the clock ticking
+			clock.tick(60) # keep the clock ticking, so sprites don't make a huge update
 			event = pygame.event.poll()
 			if event.type == MOUSEBUTTONDOWN:
 				location = pygame.mouse.get_pos()
 				
-				# resume
+				# check for clicky in the buttons
 				if location[0] > 381 and location[0] < 610:
 					# resume
 					if location[1] > 243 and location[1] < 286:
@@ -84,7 +86,8 @@ class GameOverMenu(pygame.sprite.Sprite):
 		self.running = True
 		pygame.mixer.music.stop()
 		pygame.display.flip()
-
+		
+		# loop for the menu
 		while self.running:
 			event = pygame.event.poll()
 			if event.type == MOUSEBUTTONDOWN:
