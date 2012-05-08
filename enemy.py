@@ -14,7 +14,7 @@ class Enemy(Entity):
 			self.rect.left = 1024
 			self.rect.top = 300*random()
 			self.setSpeed(-8.0*random()-10.0-self._wrap_count*random(),0.0)
-		print self._speed
+		#print self._speed
 
 	def setEnemy(self, top, left, speed):
 		self.rect.top = top
