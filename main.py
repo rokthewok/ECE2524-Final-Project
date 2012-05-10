@@ -55,8 +55,10 @@ while True:
 		# NOTE: THIS SHOULD BE ALTERED so we can load any level's music at a given time
 		level_one.start_music()
 
-		#Reset the score before beginning
+		#Reset the score and enemy speeds before beginning
 		stats.score = 0
+		for guy in enemies:
+			guy._wrap_count = 0
 
 		while state == GameState.PLAYING:
 			# catch event
