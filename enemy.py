@@ -7,8 +7,10 @@ class Enemy(Entity):
 		Entity.__init__(self,image_paths,(-9001,-9001),fps,1)
 		self._wrap_count = 0
 
+	#update function updates sprite location and variables
 	def update(self,t=0):
 		Entity.update(self,t)
+		#if enemy goes off left side of screen, bring back to "respawn"
 		if self.rect.right < 0:
 			self._wrap_count += 2
 			self.rect.left = 1024
@@ -16,6 +18,7 @@ class Enemy(Entity):
 			self.setSpeed(-8.0*random()-10.0-self._wrap_count*random(),0.0)
 		#print self._speed
 
+	#setEnemy gives the enemy a top and left location along with a speed
 	def setEnemy(self, top, left, speed):
 		self.rect.top = top
 		self.rect.left = left
