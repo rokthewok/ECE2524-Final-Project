@@ -55,6 +55,9 @@ while True:
 		# NOTE: THIS SHOULD BE ALTERED so we can load any level's music at a given time
 		level_one.start_music()
 
+		#Reset the score before beginning
+		stats.score = 0
+
 		while state == GameState.PLAYING:
 			# catch event
 			# respond to event
@@ -94,9 +97,11 @@ while True:
 				elif event.key == K_ESCAPE: #Pause button
 					pause_menu.menu(screen,clock)
 				elif event.key == K_LEFT: #Move left
-					player.moveHoriz(-15)
+					if player.rect.left > 0:
+						player.moveHoriz(-15)
 				elif event.key == K_RIGHT: #Move right
-					player.moveHoriz(15)
+					if player.rect.right < 1024:
+						player.moveHoriz(15)
 				#if event.key == K_b: #old test code
 					#test.setAnim(0,test._endFrame%4+1)
 					#print "test._startFrame=",test._startFrame," test._endFrame=",test._endFrame

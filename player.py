@@ -49,6 +49,11 @@ class Player(Entity):
 				self.image = self._invisible_pic
 			else:
 				self.image = self._images[0]
+		
+		if self.rect.left < 0:
+			self.rect.left = 0
+		elif self.rect.right > 930:
+			self.rect.right = 930
 	
 	def jump(self):
 		"""function which makes the player 'jump'"""
